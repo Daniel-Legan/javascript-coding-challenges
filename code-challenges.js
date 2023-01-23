@@ -46,3 +46,12 @@ function statsFinder(array) {
 }
 
 console.log(statsFinder([500, 400, 400, 375, 300, 350, 325, 300]));
+
+// Even or Odd
+function evenOrOdd(number) {
+    if (number % 2 === 0) {
+        return 'Even'
+    } else {
+        return 'Odd'
+    }
+}
