@@ -87,3 +87,62 @@ function addLength(str) {
     }
     return arr;
 }
+
+/*
+Write a function that takes a positive integer n, sums all the cubed values from 1 to n, and returns that sum.
+
+Assume that the input n will always be a positive integer.
+
+Examples: (Input --> output)
+
+2 --> 9 (sum of the cubes of 1 and 2 is 1 + 8)
+3 --> 36 (sum of the cubes of 1, 2, and 3 is 1 + 8 + 27)
+*/
+
+function sumCubes(n) {
+    let sum = 0;
+
+    for (let i = 1; i <= n; i++) {
+        sum += Math.pow(i, 3);
+    }
+    return sum;
+}
+
+/*
+Given an integral number, determine if it's a square number.
+*/
+
+function isSquare(n) {
+    return Number.isInteger(Math.sqrt(n));
+}
+
+/*
+Given a set of numbers, return the additive inverse of each.
+Each positive becomes negatives, and the negatives become positives.
+*/
+
+function invert(array) {
+    return array.map(el => -el);
+}
+
+/*
+There is a bus moving in the city which takes and drops some people at each bus stop.
+
+You are provided with a list (or array) of integer pairs. Elements of each pair represent the number of people that get on the bus (the first item) and the number of people that get off the bus (the second item) at a bus stop.
+
+Your task is to return the number of people who are still on the bus after the last bus stop (after the last array). Even though it is the last bus stop, the bus might not be empty and some people might still be inside the bus, they are probably sleeping there :D
+
+Take a look on the test cases.
+
+Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the returned integer can't be negative.
+
+The second value in the first pair in the array is 0, since the bus is empty in the first bus stop.
+*/
+
+var number = function (busStops) {
+    let people = 0;
+    for (let stop of busStops) {
+        people += stop[0] - stop[1];
+    }
+    return people;
+}
