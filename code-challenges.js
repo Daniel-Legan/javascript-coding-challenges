@@ -272,3 +272,16 @@ function disemvowel(str) {
 function disemvowel(str) {
     return str.replace(/[aeiou]/gi, '');
 }
+
+/*
+It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string. 
+You're given one parameter, the original string. You don't have to worry with strings with less than two characters.
+*/
+
+function removeChar(str) {
+    result = str.split('');
+    result.shift();
+    result.pop();
+    return result.join('');
+    // return str.slice(1, (str.length-1));
+};
