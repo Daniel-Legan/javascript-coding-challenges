@@ -285,3 +285,5 @@ function removeChar(str) {
     return result.join('');
     // return str.slice(1, (str.length-1));
 };
+
+// working on another tailwinds, node.js in another project
