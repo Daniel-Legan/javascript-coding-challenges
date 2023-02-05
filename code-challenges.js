@@ -314,3 +314,12 @@ function highAndLow(numbers) {
     let max = Math.max(...numbersArray);
     return `${max} ${min}`;
 }
+
+/*
+Write a program that outputs the top n elements from a list.
+*/
+
+function largest(n, array) {
+    // Find the n highest elements in a list
+    return array.sort((a, b) => b - a).slice(0, n).reverse();
+}
