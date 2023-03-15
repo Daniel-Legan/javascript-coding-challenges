@@ -348,3 +348,28 @@ function sumOfMinimums(arr) {
     }
     return sum;
 }
+
+/*
+Complete the solution so that the function will break up camel casing, using a space between words.
+
+Example
+"camelCasing"  =>  "camel Casing"
+"identifier"   =>  "identifier"
+""             =>  ""
+ */
+
+function solution(str) {
+    let result = "";
+
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+
+        if (char === char.toUpperCase()) {
+            result += " ";
+        }
+
+        result += char;
+    }
+
+    return result;
+}
