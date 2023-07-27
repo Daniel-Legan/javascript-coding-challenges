@@ -474,3 +474,44 @@ function sumDigits(num) {
 
     return lastDigit + sumDigits(remainingNum);
 }
+
+/*
+Description:
+Groups of characters decided to make a battle. Help them to figure out which group is more powerful. Create a function that will accept 2 strings and return the one who's stronger.
+
+Rules:
+Each character have its own power: A = 1, B = 2, ... Y = 25, Z = 26
+Strings will consist of uppercase letters only
+Only two groups to a fight.
+Group whose total power (A + B + C + ...) is bigger wins.
+If the powers are equal, it's a tie.
+Examples:
+      * "ONE", "TWO"  -> "TWO"`
+      * "ONE", "NEO"  -> "Tie!"
+
+*/
+
+function calculatePower(str) {
+    let totalPower = 0;
+    for (let i = 0; i < str.length; i++) {
+        const charCode = str.charCodeAt(i) - 64;
+        totalPower += charCode;
+    }
+    return totalPower;
+}
+
+function battle(x, y) {
+    const resultX = calculatePower(x);
+    const resultY = calculatePower(y);
+
+    if (resultX > resultY) {
+        return x;
+    } else if (resultY > resultX) {
+        return y;
+    } else {
+        return "Tie!";
+    }
+}
+
+console.log(battle("ONE", "TWO"));
+console.log(battle("ONE", "NEO"));
