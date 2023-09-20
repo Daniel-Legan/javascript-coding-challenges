@@ -45,7 +45,7 @@ function statsFinder(array) {
     return [(sum / array.length), Number(highestValueKey)]
 }
 
-console.log(statsFinder([500, 400, 400, 375, 300, 350, 325, 300]));
+// console.log(statsFinder([500, 400, 400, 375, 300, 350, 325, 300]));
 
 // Even or Odd
 function evenOrOdd(number) {
@@ -387,21 +387,69 @@ Examples
 [1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
 */
 
+// function findOdd(arr) {
+//     let counts = {};
+//     for (let i = 0; i < arr.length; i++) {
+//         if (counts[arr[i]]) {
+//             counts[arr[i]]++;
+//         } else {
+//             counts[arr[i]] = 1;
+//         }
+//     }
+//     for (let key in counts) {
+//         if (counts[key] % 2 !== 0) {
+//             return parseInt(key);
+//         }
+//     }
+// }
+
 function findOdd(arr) {
-    let counts = {};
-    for (let i = 0; i < arr.length; i++) {
-        if (counts[arr[i]]) {
-            counts[arr[i]]++;
-        } else {
-            counts[arr[i]] = 1;
-        }
+    let occurrences = {};
+    for (let num of arr) {
+        // This line counts the occurrences of each unique integer. If num is already a property in the occurrences object, it increments its value by 1. If num is not a property yet, it initializes its count to 1.
+        occurrences[num] = (occurrences[num] || 0) + 1;
     }
-    for (let key in counts) {
-        if (counts[key] % 2 !== 0) {
-            return parseInt(key);
+
+    /*
+    EXAMPLE:
+    occurrences = 
+    {
+        1: 2,
+        2: 1,
+        5: 2
+    }
+    */
+
+    // Sorting the occurrences object
+    for (let key in occurrences) {
+        // This line retrieves the value associated with the current key (property) being iterated.
+        let value = occurrences[key];
+
+        console.log(`key: ${key}, value: ${value}`);
+
+        if (value % 2 !== 0) {
+            // console.log('found', key);
+            return Number(key);
         }
     }
 }
+
+function iterateObject(obj) {
+    for (let property in obj) {
+        let value = obj[property]; // Access the value using bracket notation and store its value in the value variable
+        console.log(`${property}: ${value}`);
+    }
+}
+
+// function iterateObject(obj) {
+//     for (let property in obj) {
+//         console.log(`${property}: ${obj[property]}`);
+//     }
+// }
+
+// iterateObject(car = { 'apple': 1, 'banana': 2, 'orange': 3 });
+
+// console.log(findOdd([1, 1, 2, 5, 5]));
 
 /*
 Count the number of Duplicates
@@ -513,8 +561,8 @@ function battle(x, y) {
     }
 }
 
-console.log(battle("ONE", "TWO"));
-console.log(battle("ONE", "NEO"));
+// console.log(battle("ONE", "TWO"));
+// console.log(battle("ONE", "NEO"));
 
 /*
 Given two strings, the first being a random string and the second being the same as the first, but with three added characters somewhere in the string (three same characters),
@@ -630,17 +678,35 @@ function test2(arr) {
 //     return bank;
 // }
 
-function test3(arr) {
-    let bank = [];
-    for (let element of arr) {
-        if (Array.isArray(element)) {
-            bank = bank.concat(test3(element));
-        }
-        else {
-            bank.push(element);
+// function test3(arr) {
+//     let bank = [];
+//     for (let element of arr) {
+//         if (Array.isArray(element)) {
+//             bank = bank.concat(test3(element));
+//         }
+//         else {
+//             bank.push(element);
+//         }
+//     }
+//     return bank;
+// }
+
+// console.log(test3([1, 2, [3, 4]]));
+
+// node c+TAB (node code-challenges.js)
+
+function sol(number) {
+    let sum = 0;
+    for (let i = 0; i < number; i++) {
+        if (i % 3 === 0 || i % 5 === 0) {
+            sum += i;
         }
     }
-    return bank;
+    return sum;
 }
 
-console.log(test3([1, 2, [3, 4]]));
+/*
+Given an array of integers, find the one that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times.
+*/
