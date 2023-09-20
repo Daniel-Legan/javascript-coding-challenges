@@ -579,3 +579,68 @@ function distinct(array) {
     }
     return resultArray;
 }
+
+/*
+    fizz buzz
+    array of # input
+    iterate each one
+    if input is divisible by 3 and remainder is 0 print fizz
+    if input is divisible by 5 and remainder is 0 print buzz
+    and if by both print fizz buzz
+    else print the number
+*/
+
+// function test(arr) {
+//     for (let element of arr) {
+//         if (element % 3 == 0 && element % 5 === 0) {
+//             console.log('fizz buzz');
+//         }
+//         else if (element % 3 === 0) {
+//             console.log('fizz');
+//         }
+//         else if (element % 5 === 0) {
+//             console.log('buzz');
+//         }
+//         else {
+//             console.log(element);
+//         }
+//     }
+// }
+
+// test([1, 2, 3, 4, 5, 6, 15]);
+
+/*
+    flat or flatten - given a nested array [1, [2,3]]
+*/
+
+function test2(arr) {
+    arr.flat(Infinity);
+}
+
+// function test3(arr) {
+//     let bank = [];
+//     for (let element of arr) {
+//         if (Array.isArray(element)) {
+//             bank.push(...test3(element));
+//         }
+//         else {
+//             bank.push(element);
+//         }
+//     }
+//     return bank;
+// }
+
+function test3(arr) {
+    let bank = [];
+    for (let element of arr) {
+        if (Array.isArray(element)) {
+            bank = bank.concat(test3(element));
+        }
+        else {
+            bank.push(element);
+        }
+    }
+    return bank;
+}
+
+console.log(test3([1, 2, [3, 4]]));
