@@ -710,3 +710,32 @@ Given an array of integers, find the one that appears an odd number of times.
 
 There will always be only one integer that appears an odd number of times.
 */
+
+/*
+The vowel substrings in the word codewarriors are o,e,a,io. 
+The longest of these has a length of 2. 
+Given a lowercase string that has alphabetic characters only (both vowels and consonants) and no spaces, return the length of the longest vowel substring.
+Vowels are any of aeiou.
+*/
+
+function solve(string) {
+    let current = 0;
+    let max = 0;
+
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+    for (let letter of string) {
+        if (vowels.includes(letter)) {
+            current++;
+            if (current > max) {
+                max = current;
+            }
+        } else {
+            current = 0;
+        }
+    }
+
+    return max;
+}
+
+console.log(solve('codewarriors'));
