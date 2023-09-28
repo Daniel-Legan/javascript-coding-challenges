@@ -764,8 +764,7 @@ function likes(names) {
     } else if (names.length === 3) {
         return `${names[0]}, ${names[1]} and ${names[2]} like this`;
     } else {
-        const extraLikes = names.length - 2;
-        return `${names.slice(0, 2).join(', ')} and ${extraLikes} others like this`;
+        return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
     }
 }
 
@@ -774,3 +773,32 @@ function likes(names) {
 // console.log(likes(['John', 'Jim']));
 // console.log(likes(['John']));
 // console.log(likes([]));
+
+/*
+Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed (Just like the name of this Kata). 
+Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+Examples:
+
+spinWords( "Hey fellow warriors" ) => returns "Hey wollef sroirraw" 
+spinWords( "This is a test") => returns "This is a test" 
+spinWords( "This is another test" )=> returns "This is rehtona test"
+*/
+
+function spinWords(string) {
+    const array = string.trim().split(' ');
+    let newString = '';
+
+    for (let element of array) {
+        if (element.length >= 5) {
+            newString += element.split('').reverse().join('') + ' ';
+        } else {
+            newString += element + ' ';
+        }
+    }
+
+    return newString.trim();
+}
+
+// console.log(spinWords('Hey fellow warriors'));
+// console.log(spinWords('Welcome'));
