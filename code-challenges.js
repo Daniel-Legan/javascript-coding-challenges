@@ -802,3 +802,33 @@ function spinWords(string) {
 
 // console.log(spinWords('Hey fellow warriors'));
 // console.log(spinWords('Welcome'));
+
+/*
+Some people just have a first name; some people have first and last names and some people have first, middle and last names.
+
+You task is to initialize the middle names (if there is any).
+
+Examples
+'Jack Ryan'                   => 'Jack Ryan'
+'Lois Mary Lane'              => 'Lois M. Lane'
+'Dimitri'                     => 'Dimitri'
+'Alice Betty Catherine Davis' => 'Alice B. C. Davis'
+*/
+
+function initializeNames(name) {
+    let array = name.split(' ');
+    let shortenedName = [];
+
+    if (array.length <= 2) {
+        return array.join(' ')
+    } else {
+        shortenedName.push(array[0]);
+        for (let i = 1; i < array.length - 1; i++) {
+            shortenedName.push(array[i][0] + '.');
+        }
+        shortenedName.push(array[array.length - 1]);
+        return shortenedName.join(' ');
+    }
+}
+
+console.log(initializeNames('Daniel Rissinger Legan'));
