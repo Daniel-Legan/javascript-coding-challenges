@@ -815,20 +815,56 @@ Examples
 'Alice Betty Catherine Davis' => 'Alice B. C. Davis'
 */
 
-function initializeNames(name) {
-    let array = name.split(' ');
-    let shortenedName = [];
+// function initializeNames(name) {
+//     let array = name.split(' ');
+//     let shortenedName = [];
 
-    if (array.length <= 2) {
-        return array.join(' ')
-    } else {
-        shortenedName.push(array[0]);
-        for (let i = 1; i < array.length - 1; i++) {
-            shortenedName.push(array[i][0] + '.');
-        }
-        shortenedName.push(array[array.length - 1]);
-        return shortenedName.join(' ');
-    }
+//     if (array.length <= 2) {
+//         return array.join(' ')
+//     } else {
+//         shortenedName.push(array[0]);
+//         for (let i = 1; i < array.length - 1; i++) {
+//             shortenedName.push(array[i][0] + '.');
+//         }
+//         shortenedName.push(array[array.length - 1]);
+//         return shortenedName.join(' ');
+//     }
+// }
+
+function initializeNames(name) {
+    var arr = name.split(' ');
+    for (var i = 1; i < arr.length - 1; i++)
+        arr[i] = arr[i].charAt(0) + '.';
+    return arr.join(' ');
 }
 
-console.log(initializeNames('Daniel Rissinger Legan'));
+// console.log(initializeNames('Daniel Rissinger Legan'));
+
+/*
+Write a function
+
+titleToNumber(title) or title_to_number(title) or titleToNb title ...
+
+(depending on the language)
+
+that given a column title as it appears in an Excel sheet, returns its corresponding column number. All column titles will be uppercase.
+
+Examples:
+
+titleTonumber('A') === 1
+titleTonumber('Z') === 26
+titleTonumber('AA') === 27
+*/
+
+function titleToNumber(title) {
+    let result = 0;
+
+    for (let i = 0; i < title.length; i++) {
+        const number = title.charCodeAt(i) - 'A'.charCodeAt(0) + 1;
+        result = result * 26 + number;
+    }
+
+    return result;
+}
+
+console.log(titleToNumber('AA'));
