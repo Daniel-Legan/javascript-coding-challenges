@@ -867,4 +867,40 @@ function titleToNumber(title) {
     return result;
 }
 
-console.log(titleToNumber('AA'));
+// console.log(titleToNumber('AA'));
+
+/*
+I will give you an integer (N) and a string. Break the string up into as many substrings of N as you can without spaces. If there are leftover characters, include those as well.
+
+Example: 
+
+N = 5;
+
+String = "This is an example string";
+
+Return value:
+Thisi
+sanex
+ample
+strin
+g
+
+Return value as a string: 'Thisi'+'\n'+'sanex'+'\n'+'ample'+'\n'+'strin'+'\n'+'g'
+*/
+
+function stringBreakers(n, string) {
+    const newString = string.split(' ').join('');
+    let returnString = '';
+
+    for (let i = 0; i < newString.length; i += n) {
+        if (i + n < newString.length) {
+            returnString += newString.slice(i, i + n) + '\n';
+        } else {
+            returnString += newString.slice(i);
+        }
+    }
+
+    return returnString;
+}
+
+console.log(stringBreakers(3, "This is a test string"));
