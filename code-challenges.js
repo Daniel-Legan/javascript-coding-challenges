@@ -963,7 +963,7 @@ function toDayOfYear(arr) {
     const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     let numberOfDays = day;
-    
+
     if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
         daysInMonth[1] = 29;
     }
@@ -976,3 +976,42 @@ function toDayOfYear(arr) {
 }
 
 // console.log(toDayOfYear([1, 2, 2000]));
+
+/*
+Remove the duplicates from a list of integers, keeping the last ( rightmost ) occurrence of each element.
+
+Example:
+For input: [3, 4, 4, 3, 6, 3]
+
+remove the 3 at index 0
+remove the 4 at index 1
+remove the 3 at index 3
+Expected output: [4, 6, 3]
+
+More examples can be found in the test cases.
+
+Good luck!
+*/
+
+function solve(arr) {
+    const result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        const currentElement = arr[i];
+
+        // Check if the element is not in the result array
+        if (!result.includes(currentElement)) {
+            // Add the element to the result array
+            result.push(currentElement);
+        } else {
+            // If it's already in the result array, remove it
+            const index = result.indexOf(currentElement);
+            result.splice(index, 1);
+            result.push(currentElement);
+        }
+    }
+
+    return result;
+}
+
+// console.log(solve([3, 4, 4, 3, 6, 3]));
