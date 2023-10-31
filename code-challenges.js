@@ -1130,3 +1130,21 @@ function isLeapYear(year) {
 }
 
 // console.log(isLeapYear(2000));
+
+/*
+Write a function that merges two sorted arrays into a single one. 
+The arrays only contain integers. 
+Also, the final outcome must be sorted and not have any duplicate.
+*/
+
+function mergeArrays(arr1, arr2) {
+    const mergedArray = [...arr1, ...arr2];
+    const sortedArray = mergedArray.sort((a, b) => a - b);
+
+    // Remove duplicates using Set
+    const uniqueSortedArray = [...new Set(sortedArray)];
+
+    return uniqueSortedArray;
+}
+
+// console.log(mergeArrays([1, 2], [4, 3, 3]))
