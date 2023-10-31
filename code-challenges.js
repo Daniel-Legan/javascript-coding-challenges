@@ -1148,3 +1148,61 @@ function mergeArrays(arr1, arr2) {
 }
 
 // console.log(mergeArrays([1, 2], [4, 3, 3]))
+
+/*
+Complete the function to find the count of the most frequent item of an array. 
+You can assume that input is an array of integers. 
+For an empty array return 0
+*/
+
+function mostFrequentItemCount(arr) {
+    let countObject = {};
+
+    // Loop through the array and count occurrences of each element
+
+    // arr.forEach(element => {
+    //     if (countObject[element]) {
+    //         countObject[element]++;
+    //     } else {
+    //         countObject[element] = 1;
+    //     }
+    // });
+
+    arr.forEach(element => {
+        // first iteration, ie. arr[0]
+        // countObject = { '1': 1 }
+
+        // second iteration, ie. arr[1]
+        // countObject = { '1': 1, '2': 1 }
+
+        // third iteration, ie. arr[2]
+        // countObject = { '1': 2, '2': 1 }
+
+        //...
+        countObject[element] = (countObject[element] || false) + 1;
+        // console.log(countObject);
+    });
+
+    // for (let element of arr) {
+    //     if (countObject[element]) {
+    //         countObject[element]++;
+    //     } else {
+    //         countObject[element] = 1;
+    //     }
+    // }
+
+    console.log('final countObject', countObject);
+
+    // Find the maximum count
+    let maxCount = 0;
+    for (let key in countObject) {
+        if (countObject[key] > maxCount) {
+            maxCount = countObject[key];
+        }
+    }
+
+    return maxCount;
+}
+
+// console.log(mostFrequentItemCount([1, 2, 1, 3, 10, 5, 5, 1, 3, 3, 3]));
+// console.log(mostFrequentItemCount([]));
