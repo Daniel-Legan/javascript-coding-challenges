@@ -1229,3 +1229,33 @@ function findDup(arr) {
 }
 
 // console.log(findDup([4, 5, 2, 2, 3, 1]));
+
+
+/*
+DESCRIPTION:
+You will be given an array which will include both integers and characters.
+
+Return an array of length 2 with a[0] representing the mean of the ten integers as a floating point number. There will always be 10 integers and 10 characters. Create a single string with the characters and return it as a[1] while maintaining the original order.
+
+lst = ['u', '6', 'd', '1', 'i', 'w', '6', 's', 't', '4', 'a', '6', 'g', '1', '2', 'w', '8', 'o', '2', '0']
+Here is an example of your return
+
+[3.6, "udiwstagwo"]
+*/
+function mean(lst) {
+    const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    let letters = [];
+    let numbers = [];
+    for (let el of lst) {
+        if (alphabet.includes(el)) {
+            letters.push(el);
+        } else {
+            numbers.push(Number(el));
+      }
+    }
+    const average = numbers.reduce((a, b) => a + b) / numbers.length;
+    const remainingLetters = letters.join('');
+    return [average, remainingLetters];
+}
+
+// console.log(mean(['u', '6', 'd', '1', 'i', 'w', '6', 's', 't', '4', 'a', '6', 'g', '1', '2', 'w', '8', 'o', '2', '0']));
