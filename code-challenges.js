@@ -1259,3 +1259,32 @@ function mean(lst) {
 }
 
 // console.log(mean(['u', '6', 'd', '1', 'i', 'w', '6', 's', 't', '4', 'a', '6', 'g', '1', '2', 'w', '8', 'o', '2', '0']));
+
+/*
+returns true  / True if every element in an array is an integer or a float with no decimals.
+returns true  / True if array is empty.
+returns false / False for every other input.
+*/
+
+function isIntArray(arr) {
+    if (!Array.isArray(arr) || arr === null) {
+        return false;
+    }
+
+    if (arr.length === 0) {
+        return true;
+    }
+
+    for (let el of arr) {
+        // operator precedence: !, &&, || (in order)
+        // 5; !(true OR (true AND true)) => !(true OR true) => !true => false => does not meet if conditions, does not return true.
+        // 5.1; !(false OR (true AND false)) => !(false OR false) => !false => true => meets if conditions, return false.
+        if (!(Number.isInteger(el) || (Number.isFinite(el) && el % 1 === 0))) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+console.log(isIntArray([1, 2, 2.1]));
